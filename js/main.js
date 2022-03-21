@@ -13,6 +13,18 @@ d3.csv('data/occurrences.csv')
         d.decimalLongitude = 99999999
       }
 
+      if(d.month == ""){
+          d.month = 0;
+      } else {
+          d.month = +d.month;
+      }
+
+      if (d.day == "") {
+          d.day = 0;
+      } else {
+          d.day = +d.day;
+      }
+
       if(d.year == "null" || d.year == ""){
         console.log(d.eventDate)
         let date = new Date(d.eventDate) 
@@ -24,7 +36,7 @@ d3.csv('data/occurrences.csv')
         }
       }
 
-      d.year = +d.year
+      d.year = +d.year;
 
       d.latitude = +d.decimalLatitude;
       d.longitude = +d.decimalLongitude; 
