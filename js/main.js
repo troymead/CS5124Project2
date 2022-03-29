@@ -1,6 +1,6 @@
 
 
-
+let timelineData = [];
 d3.csv('data/occurrences.csv')
 .then(data => {
     let unmappedPoints = 0;
@@ -63,8 +63,24 @@ d3.csv('data/occurrences.csv')
 
     });
 
+    groups = d3.groups(data, d => d.year);
+
+    groups.forEach(d=> {
+
+      timelineData.push({"year": d[0] , "specimen_count": d3.selectAll(d[1]).size()});
+
+    })
+    console.log(timelineData);
+
+
     leafletMap = new LeafletMap({ parentElement: '#my-map'}, data);
     console.log(unmappedPoints);
+
+    let TimelineChart = new BarChart({
+      'parentElement': "#timelineBarChart", 
+      'containerHeight': 600, 
+      'containerWidth': 2500, 
+  }, timelineData)
 
 
   })
