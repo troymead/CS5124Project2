@@ -1,25 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Interactive map with Leaflet</title>
+    <title>Project 2</title>
     <link rel="icon" href="data:;base64,iVBORwOKGO=" />
     <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <select></select>
-    <div id="my-map"></div>
+    
+    <h1>Project 2</h1>
+    <div class="grid-container">
+        
+        
+        <div id="my-map"></div>
+        <div class="color-by">
+            Color by: <select id="mapSelect"></select>
+        </div>
 
-
-    <script src="js/d3.v6.min.js"></script>
-    <script src="js/leaflet.js"></script>
-
-
-    <script src="js/main.js"></script>
-    <script src="js/leafletMap.js"></script>
-
+        <div id="legend"></div>
+          
+    
+        <script src="js/d3.v6.min.js"></script>
+        <script src="js/d3-legend.min.js"></script>
+        <script src="js/leaflet.js"></script>
+    
+    
+        <script src="js/main.js"></script>
+        <script src="js/leafletMap.js"></script>
+    
+        
+    </div>
     <div id="tooltip"></div>
 
-
+   
 </body>
 </html>

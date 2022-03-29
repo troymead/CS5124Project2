@@ -22,6 +22,11 @@ d3.csv('data/occurrences.csv')
         d.decimalLongitude = +d.decimalLongitude;
       }
 
+      // Phylum
+      if(d.phylum == ""){
+        d.phylum = "Unknown"
+      }
+
       // DATE CONSTRUCTION
       if(d.month == ""){
           d.month = 0;
@@ -35,7 +40,7 @@ d3.csv('data/occurrences.csv')
           d.day = +d.day;
       }
 
-      d.year = +d.year;
+      d.year = parseInt(d.year);
 
       // TODO: if this is needed in project, make sure to check if value is -1 to parse out empty values
       if (d.startDayOfYear == "") {
