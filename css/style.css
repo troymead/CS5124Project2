@@ -39,3 +39,56 @@
   grid-row: 2 / span 2;
   height: fit-content;
 }
+
+#timeline {
+  grid-row: 3 / span 2;
+}
+
+/* Tooltip */
+.tooltip circle {
+  fill: none;
+  stroke: #78bd39;
+}
+.tooltip text {
+  fill: #78bd39;
+}
+
+
+/* Axes */
+.axis line {
+  fill: none;
+  stroke: #8693a0;
+  shape-rendering: crispEdges;
+}
+.axis text {
+  font-size: 13px;
+  fill: #6b6b6b;
+}
+.axis-title {
+  font-size: 13px;
+  fill: #888;
+}
+.x-axis .domain {
+  stroke: #8693a0;
+}
+.y-axis .domain {
+  display: none;
+}
+
+.brush-bar {
+  fill: #a5b3bf;
+}
+.timeline-bar {
+  fill: #517390;
+}
+
+#timeline-tooltip {
+  position: absolute;
+  opacity: 0;
+  background: #fff;
+  box-shadow: 2px 2px 3px 0px rgb(92 92 92 / 0.5);
+  border: 1px solid #ddd;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 2px 8px;
+}

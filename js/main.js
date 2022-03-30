@@ -1,4 +1,5 @@
 
+let timelineData = [];
 
 
 d3.csv('data/occurrences.csv')
@@ -66,10 +67,25 @@ d3.csv('data/occurrences.csv')
       d.latitude = +d.decimalLatitude;
       d.longitude = +d.decimalLongitude; 
 
+      
+
     });
+
+    groups = d3.groups(data, d => d.year);
+
+    groups.forEach(d=> {
+
+      timelineData.push({"year": d[0] , "specimen_count": d3.selectAll(d[1]).size()});
+
+    })
+
+    console.log(timelineData)
 
     leafletMap = new LeafletMap({ parentElement: '#my-map'}, data);
     console.log(unmappedPoints);
+
+    timeline = new Timeline({parentElement: '#timeline'}, timelineData);
+    timeline.updateVis();
 
 
   })
