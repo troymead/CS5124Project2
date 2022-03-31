@@ -32,7 +32,113 @@
         <script src="js/leafletMap.js"></script>
         <script src="js/timeline.js"></script>
 
-    
+            <h2>Specimen with No Coordinates</h2>
+    <svg id="pie1" width="300" height="200"></svg> <!--Step 2-->
+    <script>
+        
+        // Step 3
+        var svg = d3.select("#pie1"),
+            width = svg.attr("width"),
+            height = svg.attr("height"),
+            radius = 80;
+
+        // Step 1        
+        var data = [{name: "No Coordinates", share: 90}, 
+                    {name: "With Coordinates", share: 7574}];
+        
+        var g = svg.append("g")
+                   .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+        // Step 4
+        var ordScale = d3.scaleOrdinal()
+                            .domain(data)
+                            .range(['#72EB0B','#E14422']);
+
+        // Step 5
+        var pie = d3.pie().value(function(d) { 
+                return d.share; 
+            });
+
+        var arc = g.selectAll("arc")
+                   .data(pie(data))
+                   .enter();
+
+        // Step 6
+        var path = d3.arc()
+                     .outerRadius(radius)
+                     .innerRadius(40);
+
+        arc.append("path")
+           .attr("d", path)
+           .attr("fill", function(d) { return ordScale(d.data.name); });
+
+        // Step 7
+        var label = d3.arc()
+                      .outerRadius(radius)
+                      .innerRadius(0);
+            
+        arc.append("text")
+           .attr("transform", function(d) { 
+                    return "translate(" + label.centroid(d) + ")"; 
+            })
+           .text(function(d) { return d.data.name; })
+           .style("font-family", "arial")
+           .style("font-size", 15);     
+    </script>
+
+    <h2>Specimen with No Event Date</h2>
+    <svg id="pie2" width="300" height="200"></svg> <!--Step 2-->
+    <script>
+        
+        // Step 3
+        var svg = d3.select("#pie2"),
+            width = svg.attr("width"),
+            height = svg.attr("height"),
+            radius = 80;
+
+        // Step 1        
+        var data = [{name: "No Event Date", share: 25}, 
+                    {name: "With Event Date", share: 7639}];
+        
+        var g = svg.append("g")
+                   .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+        // Step 4
+        var ordScale = d3.scaleOrdinal()
+                            .domain(data)
+                            .range(['#72EB0B','#E14422']);
+
+        // Step 5
+        var pie = d3.pie().value(function(d) { 
+                return d.share; 
+            });
+
+        var arc = g.selectAll("arc")
+                   .data(pie(data))
+                   .enter();
+
+        // Step 6
+        var path = d3.arc()
+                     .outerRadius(radius)
+                     .innerRadius(40);
+
+        arc.append("path")
+           .attr("d", path)
+           .attr("fill", function(d) { return ordScale(d.data.name); });
+
+        // Step 7
+        var label = d3.arc()
+                      .outerRadius(radius)
+                      .innerRadius(0);
+            
+        arc.append("text")
+           .attr("transform", function(d) { 
+                    return "translate(" + label.centroid(d) + ")"; 
+            })
+           .text(function(d) { return d.data.name; })
+           .style("font-family", "arial")
+           .style("font-size", 15);     
+    </script>
         
     </div>
     <div id="tooltip"></div>
