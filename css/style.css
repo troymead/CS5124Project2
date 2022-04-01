@@ -46,7 +46,9 @@ h2 {
 
 #legend {
   grid-row: 2 / span 2;
-  height: fit-content;
+  /* height: fit-content; */
+  height: '300px';
+  width: '300px';
 }
 
 #timeline {

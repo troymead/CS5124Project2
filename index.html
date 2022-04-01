@@ -17,7 +17,7 @@
             Color by: <select id="mapSelect"></select>
         </div>
 
-        <svg id="legend"></svg>
+        <svg id="legend" width="200" height="400"></svg>
 
         <div>
             
@@ -27,10 +27,29 @@
             <h4 class="x-axis-label">Year</h4>
 
         </div>
+
+        <div>
+            <h2>Number of Specimens Collected Grouped by Month</h2>
+            <div id="barchart1"></div>
+            <h4 class="y-axis-label">Number of Specimen Collected</h4>
+            <h4 class="x-axis-label">Month</h4>
+        </div>
+
+        <div>
+            <h2>Number of Specimens by Phylum</h2>
+            <div id="barchart2"></div>
+            <h4 class="y-axis-label">Number of Specimen</h4>
+            <h4 class="x-axis-label">Phylum</h4>
+        </div>
+
+        <div>
+            <h2>Top 10 Collectors of Specimens</h2>
+            <div id="barchart3"></div>
+            <h4 class="y-axis-label">Number of Specimen</h4>
+            <h4 class="x-axis-label">Collector Name</h4>
+        </div>
         
 
-
-          
         <script src="js/d3.v6.min.js"></script>
         <script src="js/d3-legend.min.js"></script>
         <script src="js/leaflet.js"></script>
@@ -39,9 +58,12 @@
         <script src="js/main.js"></script>
         <script src="js/leafletMap.js"></script>
         <script src="js/timeline.js"></script>
+        <script src="js/barChart.js"></script>
 
+        <div>
             <h2>Specimen with No Coordinates</h2>
-    <svg id="pie1" width="300" height="200"></svg> <!--Step 2-->
+            <svg id="pie1" width="300" height="200"></svg> <!--Step 2-->
+        </div>
     <script>
         
         // Step 3
@@ -94,8 +116,10 @@
            .style("font-size", 15);     
     </script>
 
-    <h2>Specimen with No Event Date</h2>
-    <svg id="pie2" width="300" height="200"></svg> <!--Step 2-->
+    <div>
+        <h2>Specimen with No Event Date</h2>
+        <svg id="pie2" width="300" height="200"></svg> <!--Step 2-->
+    </div>
     <script>
         
         // Step 3
@@ -151,6 +175,7 @@
     </div>
     <div id="tooltip"></div>
     <div id="timeline-tooltip"></div>
+    <div id="barchart1-tooltip"></div>
 
    
 </body>

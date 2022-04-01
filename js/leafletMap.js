@@ -187,7 +187,7 @@ class LeafletMap {
     d3.select("#mapSelect").on("change", function(d) {
         // recover the option that has been chosen
         var selectedOption = d3.select(this).property("value")
-        console.log(selectedOption)
+        // console.log(selectedOption)
         // run the updateChart function with this selected option
         update(selectedOption)
     })

@@ -103,8 +103,8 @@ class Timeline{
         var n=5, 
             data = scale.domain(),
             dataLength = data.length;
-        console.log(data)
-        console.log(dataLength)
+        // console.log(data)
+        // console.log(dataLength)
         
         return d3.axisBottom(scale).tickValues( 
           dataLength > n ? d3.ticks(data[0], data[dataLength-1], n) : data);
@@ -203,13 +203,13 @@ class Timeline{
         if(brushValue === 0){
             brushValue = this.width;
         }
-        console.log(brushValue)
+        // console.log(brushValue)
 
         var tickValueMultiplier = Math.ceil(Math.abs(tickScale(brushValue)));  
-        console.log(tickValueMultiplier)
+        // console.log(tickValueMultiplier)
         var filteredTickValues = data.filter(function(d, i){return i % tickValueMultiplier === 0}).map(function(d){ return d.year})
     
-        console.log(filteredTickValues)
+        // console.log(filteredTickValues)
 
         vis.focus.select(".axis.x-axis").call(vis.xAxisFocus.tickValues(filteredTickValues));
     }
