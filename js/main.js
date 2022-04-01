@@ -71,7 +71,19 @@ d3.csv('data/occurrences.csv')
 
     });
 
+    let barChart1Data = []
+    let barChart2Data = []
+    let barChart3Data = []
+
     groups = d3.groups(data, d => d.year);
+    monthGroups = d3.groups(data, d=> d.month)
+    phylumGroups = d3.groups(data, d => d.phylum)
+    collectedByGroups = d3.groups(data, d => d.recordedBy)
+
+    console.log(monthGroups)
+    console.log(groups)
+    console.log(phylumGroups)
+    console.log(collectedByGroups)
 
     groups.forEach(d=> {
 
@@ -79,13 +91,48 @@ d3.csv('data/occurrences.csv')
 
     })
 
+    monthGroups.forEach(d => {
+      barChart1Data.push({
+        'x_value': d[0], 
+        'y_value': d3.selectAll(d[1]).size()
+      })
+    })
+
+    phylumGroups.forEach(d => {
+      barChart2Data.push({
+        'x_value': d[0],
+        'y_value': d3.selectAll(d[1]).size()
+      })
+    })
+
+    collectedByGroups.forEach(d => {
+      barChart3Data.push({
+        'x_value': d[0],
+        'y_value': d3.selectAll(d[1]).size()
+      })
+    })
+
+    barChart1Data.sort(function(a,b) {
+      return a.x_value - b.x_value
+    })
+
+    barChart3Data.sort(function(a,b) {
+      return b.y_value - a.y_value
+    })
+
     console.log(timelineData)
+    console.log(barChart1Data)
+    console.log(barChart3Data.slice(0, 11))
 
     leafletMap = new LeafletMap({ parentElement: '#my-map'}, data);
     console.log(unmappedPoints);
 
     timeline = new Timeline({parentElement: '#timeline'}, timelineData);
     timeline.updateVis();
+
+    barChart1 = new BarChart({parentElement: '#barchart1'}, barChart1Data);
+    barChart2 = new BarChart({parentElement: '#barchart2'}, barChart2Data);
+    barChart3 = new BarChart({parentElement: '#barchart3'}, barChart3Data.slice(0,11));
 
 
   })
