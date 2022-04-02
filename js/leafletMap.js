@@ -121,7 +121,7 @@ class LeafletMap {
         .attr("transform", "translate(20,20)");
 
     var legendSequential = d3.legendColor()
-        .shapeWidth(30)
+        .shapeWidth(60)
         .cells(10)
         .scale(colorScale) 
         .labelFormat(d3.format(".0f"))
@@ -147,7 +147,7 @@ class LeafletMap {
 
           // Update legend
           var legendSequential = d3.legendColor()
-              .shapeWidth(30)
+              .shapeWidth(120)
               .cells(10)
               .scale(colorScale)
               .labelFormat(d3.format(".0f")) 
@@ -160,7 +160,7 @@ class LeafletMap {
 
           // Update legend
           var legendSequential = d3.legendColor()
-              .shapeWidth(30)
+              .shapeWidth(120)
               .cells(10)
               .scale(colorScale) 
           break;
@@ -170,7 +170,7 @@ class LeafletMap {
 
           // Update legend
           var legendSequential = d3.legendColor()
-              .shapeWidth(30)
+              .shapeWidth(120)
               .cells(10)
               .scale(colorScale) 
           break;

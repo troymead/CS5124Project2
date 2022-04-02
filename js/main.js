@@ -130,9 +130,9 @@ d3.csv('data/occurrences.csv')
     timeline = new Timeline({parentElement: '#timeline'}, timelineData);
     timeline.updateVis();
 
-    barChart1 = new BarChart({parentElement: '#barchart1'}, barChart1Data);
-    barChart2 = new BarChart({parentElement: '#barchart2'}, barChart2Data);
-    barChart3 = new BarChart({parentElement: '#barchart3'}, barChart3Data.slice(0,11));
+    barChart1 = new BarChart({parentElement: '#barchart1', tooltipElement: '#barchart1-tooltip'}, barChart1Data);
+    barChart2 = new BarChart({parentElement: '#barchart2', tooltipElement: '#barchart2-tooltip'}, barChart2Data);
+    barChart3 = new BarChart({parentElement: '#barchart3', tooltipElement: '#barchart3-tooltip'}, barChart3Data.slice(0,11));
 
 
   })
