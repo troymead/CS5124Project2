@@ -2,7 +2,8 @@ class BarChart{
     constructor(_config, _data) {
         this.config = {
             parentElement: _config.parentElement,
-            width:  800,
+            tooltip: _config.tooltipElement,
+            width:  810,
             height: 400,
             margin: {
                 top: 10,
@@ -40,7 +41,7 @@ class BarChart{
             .domain(vis.data.map(vis.xValue))
             .padding(0.2);
         vis.svg.append('g')
-            .attr('transform', 'translate(0,'+vis.config.height+')')
+            .attr('transform', 'translate(45,'+vis.config.height+')')
             .call(d3.axisBottom(vis.x))
 
         let maxArr = []
@@ -52,8 +53,14 @@ class BarChart{
         vis.y = d3.scaleLinear()
             .domain([0, d3.max(maxArr)+100])
             .range([vis.config.height, 0]);
+
+        vis.yAxis = d3.axisLeft()
+            .scale(vis.y)   
+            .ticks(25)
         vis.svg.append('g')
-            .call(d3.axisLeft(vis.y));
+            .attr('class', 'y axis')
+            .attr('transform', 'translate(45,0)')
+            .call(vis.yAxis);
 
         vis.svg.selectAll('bar')
             .data(vis.data)
@@ -62,7 +69,21 @@ class BarChart{
                 .attr('y', d => vis.y(d.y_value))
                 .attr('width', vis.x.bandwidth())
                 .attr('height', d => vis.config.height - vis.y(d.y_value))
+                .attr('transform', 'translate(45,0)')
                 .attr('fill', '#69b3a2')
-
+                .on('mouseover', function(event,d) { 
+                    //create a tool tip
+                    d3.select(vis.config.tooltipElement)
+                        .style('opacity', 1)
+                        .style('z-index', 1000000)
+                        .html(`<div class="barchart-tooltip-label">Specimens collected: ${d.y_value}</div>`)
+                        .style('left', (event.pageX) + 'px')   
+                        .style('top', (event.pageY) + 'px')
+                        .on('mouseleave', function() {
+                            d3.select(vis.config.tooltipElement).style('opacity', 0) //turn off the tooltip
+                                .style('left', '0px')   
+                                .style('top', '0px')
+                        })
+                  })          
     }
 }

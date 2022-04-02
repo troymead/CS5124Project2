@@ -1,76 +1,80 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Project 2</title>
+    <title>Project 2: Visualizing the UC Herbarium</title>
     <link rel="icon" href="data:;base64,iVBORwOKGO=" />
     <link rel="stylesheet" href="css/leaflet.css">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <script src="js/d3.v6.min.js"></script>
+    <script src="js/d3-legend.min.js"></script>
+    <script src="js/leaflet.js"></script>
+
+    <script src="js/main.js"></script>
+    <script src="js/leafletMap.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/barChart.js"></script>
+
     
-    <h1>Project 2</h1>
-    <div class="grid-container">
+    <h1>Project 2: Visualizing the UC Herbarium</h1>
+    <h1>By: Briana Antiri, Troy Meadows, Faith Tremmel, and Sydni-Dee Venter</h1>
+    <div class="parent">
+        <div class="map">
+            <div>
+                <div class="float-child" id="my-map"></div>
+                <svg id="legend" width="200" height="400"></svg>
+
+                    Color by: <select id="mapSelect"></select>
         
-        
-        <div id="my-map"></div>
-        <div class="color-by">
-            Color by: <select id="mapSelect"></select>
+                
+            </div>
+    
         </div>
-
-        <svg id="legend" width="200" height="400"></svg>
-
-        <div>
-            
+        <div class="timeline">
             <h2>Timeline of Number of Specimens collected from 1888 - 2017</h3>
-            <svg id="timeline"></svg>
-            <h4 class="y-axis-label">Number of Specimen Collected</h4>
-            <h4 class="x-axis-label">Year</h4>
-
-        </div>
-
-        <div>
-            <h2>Number of Specimens Collected Grouped by Month</h2>
-            <div id="barchart1"></div>
-            <h4 class="y-axis-label">Number of Specimen Collected</h4>
-            <h4 class="x-axis-label">Month</h4>
-        </div>
-
-        <div>
-            <h2>Number of Specimens by Phylum</h2>
-            <div id="barchart2"></div>
-            <h4 class="y-axis-label">Number of Specimen</h4>
-            <h4 class="x-axis-label">Phylum</h4>
-        </div>
-
-        <div>
+                <svg id="timeline" width="1000" height="2250"></svg>
+                <h4 class="timeline-y-axis-label">Number of Specimen Collected</h4>
+                <h4 class="timeline-x-axis-label">Year</h4>
+            </div>
+        <div class="barchart1">
             <h2>Top 10 Collectors of Specimens</h2>
             <div id="barchart3"></div>
             <h4 class="y-axis-label">Number of Specimen</h4>
             <h4 class="x-axis-label">Collector Name</h4>
         </div>
-        
-
-        <script src="js/d3.v6.min.js"></script>
-        <script src="js/d3-legend.min.js"></script>
-        <script src="js/leaflet.js"></script>
-    
-    
-        <script src="js/main.js"></script>
-        <script src="js/leafletMap.js"></script>
-        <script src="js/timeline.js"></script>
-        <script src="js/barChart.js"></script>
-
-        <div>
-            <h2>Specimen with No Coordinates</h2>
-            <svg id="pie1" width="300" height="200"></svg> <!--Step 2-->
+        <div class="barchart2">
+            <h2>Number of Specimens Collected Grouped by Month</h2>
+            <div id="barchart1"></div>
+            <h4 class="y-axis-label">Number of Specimen Collected</h4>
+            <h4 class="x-axis-label">Month</h4>
         </div>
+        <div class="barchart3">
+            <h2>Number of Specimens by Phylum</h2>
+            <div id="barchart2"></div>
+            <h4 class="y-axis-label">Number of Specimen</h4>
+            <h4 class="x-axis-label">Phylum</h4>
+        </div>
+        <div class="piechart1">
+            <h2>Specimen with No Coordinates</h2>
+            <svg id="pie1" width="500" height="500"></svg> <!--Step 2-->
+            <h2>No Coordinates: 90</h2>
+            <h2>With Coordinates: 7574</h2>
+        </div>
+        <div class="piechart2">
+            <h2>Specimen with No Event Date</h2>
+            <svg id="pie2" width="500" height="500"></svg> <!--Step 2-->    
+            <h2>No Date: 25</h2>
+            <h2>With Date: 7639</h2>
+        </div>
+
     <script>
         
         // Step 3
         var svg = d3.select("#pie1"),
             width = svg.attr("width"),
             height = svg.attr("height"),
-            radius = 80;
+            radius = 160;
 
         // Step 1        
         var data = [{name: "No Coordinates", share: 90}, 
@@ -96,7 +100,7 @@
         // Step 6
         var path = d3.arc()
                      .outerRadius(radius)
-                     .innerRadius(40);
+                     .innerRadius(80);
 
         arc.append("path")
            .attr("d", path)
@@ -116,17 +120,13 @@
            .style("font-size", 15);     
     </script>
 
-    <div>
-        <h2>Specimen with No Event Date</h2>
-        <svg id="pie2" width="300" height="200"></svg> <!--Step 2-->
-    </div>
     <script>
         
         // Step 3
         var svg = d3.select("#pie2"),
             width = svg.attr("width"),
             height = svg.attr("height"),
-            radius = 80;
+            radius = 160;
 
         // Step 1        
         var data = [{name: "No Event Date", share: 25}, 
@@ -176,6 +176,8 @@
     <div id="tooltip"></div>
     <div id="timeline-tooltip"></div>
     <div id="barchart1-tooltip"></div>
+    <div id="barchart2-tooltip"></div>
+    <div id="barchart3-tooltip"></div>
 
    
 </body>

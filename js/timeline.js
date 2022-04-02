@@ -3,12 +3,12 @@ class Timeline{
         console.log("inside the bar chart constructor");
         this.config = {
             parentElement: _config.parentElement,
-            width: _config.containerWidth || 800,
-            height: _config.containerHeight || 240,
-            margin: {top: 10, right: 10, bottom: 100, left: 45},
+            width: _config.containerWidth || 1920,
+            height: _config.containerHeight || 576,
+            margin: {top: 24, right: 24, bottom: 240, left: 108},
             // tooltipPadding: _config.tooltipPadding || 15,
-            contextMargin: {top: 280, right: 10, bottom: 20, left: 45},
-            contextHeight: 50
+            contextMargin: {top: 672, right: 24, bottom: 48, left: 108},
+            contextHeight: 120
           }
         console.log("Loading data now..")
 

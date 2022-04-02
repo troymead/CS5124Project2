@@ -35,7 +35,7 @@ h2 {
   gap: 10px;
 }
 
-.color-by {
+#color-by {
   grid-row: 1;
 }
 
@@ -51,8 +51,14 @@ h2 {
   width: '300px';
 }
 
+#legend > svg > g > g > g > text {
+  font-size: 32px
+}
+
 #timeline {
-  grid-row: 3 / span 2;
+  width: 2100px;
+  height: 900px;
+  /* grid-row: 3 / span 2; */
 }
 
 /* Tooltip */
@@ -105,9 +111,9 @@ h2 {
 }
 
 .x-axis-label {
-  position: absolute; 
-  bottom: 10%; 
-  left: 50%;
+  position: relative; 
+  bottom: 15%; 
+  left: 45%;
   color: #130109;
   font-size: 18px;
 }
@@ -120,9 +126,63 @@ h2 {
   -webkit-transform: rotate(-90deg);
   -webkit-transform-origin:right, top; 
 
-  position: absolute; 
-  bottom: 43%; 
-  left: -13%;
+  position: relative; 
+  bottom: 75%; 
+  right: 550px;
   color: #130109;
   font-size: 18px;
+}
+
+.timeline-x-axis-label {
+  position: relative; 
+  bottom: 15%; 
+  left: 50%;
+  color: #130109;
+  font-size: 18px;
+
+}
+
+.timeline-y-axis-label {
+  transform: rotate(-90deg); 
+  transform-origin: right, top;
+  -ms-transform: rotate(-90deg);
+  -ms-transform-origin:right, top;
+  -webkit-transform: rotate(-90deg);
+  -webkit-transform-origin:right, top; 
+
+  position: relative; 
+  bottom: 140%; 
+  right: 1050px;
+  color: #130109;
+  font-size: 18px;
+}
+
+
+.parent {  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  gap: 0px 0px;
+  grid-auto-flow: row;
+  grid-template-areas:
+    "map map piechart1"
+    "timeline timeline piechart2"
+    "barchart1 barchart2 barchart3";
+}
+
+.map { grid-area: map; }
+
+.timeline { grid-area: timeline; }
+
+.piechart1 { grid-area: piechart1; }
+
+.piechart2 { grid-area: piechart2; }
+
+.barchart1 { grid-area: barchart1; }
+
+.barchart2 { grid-area: barchart2; }
+
+.barchart3 { grid-area: barchart3; }
+
+.float-child {
+  display: inline-block;
 }
