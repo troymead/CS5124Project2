@@ -121,7 +121,7 @@ class LeafletMap {
         .attr("transform", "translate(20,20)");
 
     var legendSequential = d3.legendColor()
-        .shapeWidth(60)
+        .shapeWidth(20)
         .cells(10)
         .scale(colorScale) 
         .labelFormat(d3.format(".0f"))
@@ -147,7 +147,7 @@ class LeafletMap {
 
           // Update legend
           var legendSequential = d3.legendColor()
-              .shapeWidth(120)
+              .shapeWidth(20)
               .cells(10)
               .scale(colorScale)
               .labelFormat(d3.format(".0f")) 
@@ -160,7 +160,7 @@ class LeafletMap {
 
           // Update legend
           var legendSequential = d3.legendColor()
-              .shapeWidth(120)
+              .shapeWidth(20)
               .cells(10)
               .scale(colorScale) 
           break;
@@ -170,8 +170,9 @@ class LeafletMap {
 
           // Update legend
           var legendSequential = d3.legendColor()
-              .shapeWidth(120)
+              .shapeWidth(20)
               .cells(10)
+              .labelWrap(50)
               .scale(colorScale) 
           break;
       }
@@ -201,7 +202,7 @@ class LeafletMap {
   updateVis() {
     let vis = this;
 
-    vis.radiusSize = 3; 
+    vis.radiusSize = 10; 
    
    //redraw based on new zoom- need to recalculate on-screen position
     vis.Dots
