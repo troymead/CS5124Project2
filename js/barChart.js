@@ -3,7 +3,7 @@ class BarChart{
         this.config = {
             parentElement: _config.parentElement,
             tooltip: _config.tooltipElement,
-            width:  810,
+            width:  850,
             height: 400,
             margin: {
                 top: 10,
@@ -43,7 +43,9 @@ class BarChart{
         vis.svg.append('g')
             .attr('transform', 'translate(45,'+vis.config.height+')')
             .call(d3.axisBottom(vis.x))
-
+            .selectAll('text')
+            .attr('text-anchor', 'end')
+            .attr('transform', 'rotate(-20)')
         let maxArr = []
 
         vis.data.map(d => {
@@ -62,7 +64,7 @@ class BarChart{
             .attr('transform', 'translate(45,0)')
             .call(vis.yAxis);
 
-        vis.svg.selectAll('bar')
+        let bars = vis.svg.selectAll('.bar')
             .data(vis.data)
             .join('rect')
                 .attr('x', d => vis.x(d.x_value))
@@ -71,19 +73,20 @@ class BarChart{
                 .attr('height', d => vis.config.height - vis.y(d.y_value))
                 .attr('transform', 'translate(45,0)')
                 .attr('fill', '#69b3a2')
-                .on('mouseover', function(event,d) { 
-                    //create a tool tip
-                    d3.select(vis.config.tooltipElement)
-                        .style('opacity', 1)
-                        .style('z-index', 1000000)
-                        .html(`<div class="barchart-tooltip-label">Specimens collected: ${d.y_value}</div>`)
-                        .style('left', (event.pageX) + 'px')   
-                        .style('top', (event.pageY) + 'px')
-                        .on('mouseleave', function() {
-                            d3.select(vis.config.tooltipElement).style('opacity', 0) //turn off the tooltip
-                                .style('left', '0px')   
-                                .style('top', '0px')
-                        })
-                  })          
+
+        bars   
+            .on('mouseover', (event,d) => {
+                d3.select(vis.config.tooltip)
+                    .style('display', 'block')
+                    .style('opacity', 1)
+                    .style('z-index', 100000)
+                    .style('left', (event.pageX + 15) + 'px')
+                    .style('top', (event.pageY + 15) + 'px')
+                    .html(`<div class="barchart-tooltip-label">Specimens collected: ${d.y_value}</div>`);
+            })
+            .on('mouseleave', () => {
+                d3.select(vis.config.tooltip).style('display', 'none');
+            });
+          
     }
 }

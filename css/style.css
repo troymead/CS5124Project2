@@ -99,7 +99,7 @@ h2 {
   fill: #517390;
 }
 
-#timeline-tooltip {
+#timeline-tooltip, #barchart1-tooltip, #barchart2-tooltip, #barchart3-tooltip {
   position: absolute;
   opacity: 0;
   background: #fff;
